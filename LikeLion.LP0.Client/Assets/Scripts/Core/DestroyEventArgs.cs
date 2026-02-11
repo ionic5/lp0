@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LikeLion.LH1.Client.Core
+namespace LikeLion.LP0.Client.Core
 {
     /// <summary>
     /// Provides data for an event that occurs BEFORE the target object is destroyed.

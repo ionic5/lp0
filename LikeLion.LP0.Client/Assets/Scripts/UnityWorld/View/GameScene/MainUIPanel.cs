@@ -1,8 +1,8 @@
-﻿using LikeLion.LH1.Client.Core.View.GameScene;
+﻿using LikeLion.LP0.Client.Core.View.GameScene;
 using TMPro;
 using UnityEngine;
 
-namespace LikeLion.LH1.Client.UnityWorld.View.GameScene
+namespace LikeLion.LP0.Client.UnityWorld.View.GameScene
 {
     public class MainUIPanel : MonoBehaviour, IMainUIPanel
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LikeLion.LH1.Client.Core.View.Scenes
+namespace LikeLion.LP0.Client.Core.View.Scenes
 {
     public interface ITitleScene : IDestroyable
     {

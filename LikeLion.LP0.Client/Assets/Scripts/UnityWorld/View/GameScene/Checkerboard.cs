@@ -1,11 +1,11 @@
-using LikeLion.LH1.Client.Core;
-using LikeLion.LH1.Client.Core.GameScene;
+using LikeLion.LP0.Client.Core;
+using LikeLion.LP0.Client.Core.GameScene;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace LikeLion.LH1.Client.UnityWorld.View.GameScene
+namespace LikeLion.LP0.Client.UnityWorld.View.GameScene
 {
     public class Checkerboard : MonoBehaviour, Core.View.GameScene.ICheckerboard
     {

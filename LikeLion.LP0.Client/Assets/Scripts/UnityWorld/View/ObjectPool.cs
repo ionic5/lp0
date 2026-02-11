@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LikeLion.LH1.Client.UnityWorld.View
+namespace LikeLion.LP0.Client.UnityWorld.View
 {
     public class ObjectPool : MonoBehaviour
     {

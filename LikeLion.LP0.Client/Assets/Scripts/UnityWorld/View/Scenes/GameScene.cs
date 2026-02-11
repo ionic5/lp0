@@ -1,6 +1,6 @@
-﻿using LikeLion.LH1.Client.UnityWorld.View.GameScene;
+﻿using LikeLion.LP0.Client.UnityWorld.View.GameScene;
 
-namespace LikeLion.LH1.Client.UnityWorld.View.Scenes
+namespace LikeLion.LP0.Client.UnityWorld.View.Scenes
 {
     public class GameScene : Scene
     {

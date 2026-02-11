@@ -1,7 +1,7 @@
-﻿using LikeLion.LH1.Client.Core.GameScene;
+﻿using LikeLion.LP0.Client.Core.GameScene;
 using UnityEngine;
 
-namespace LikeLion.LH1.Client.UnityWorld.View.GameScene
+namespace LikeLion.LP0.Client.UnityWorld.View.GameScene
 {
     public class StonePanel : MonoBehaviour
     {

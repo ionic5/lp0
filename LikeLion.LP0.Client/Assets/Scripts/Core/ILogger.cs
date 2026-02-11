@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace LikeLion.LH1.Client.Core
+namespace LikeLion.LP0.Client.Core
 {
     public interface ILogger
     {

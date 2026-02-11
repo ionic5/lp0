@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LikeLion.LH1.Client.UnityWorld.View.GameScene
+namespace LikeLion.LP0.Client.UnityWorld.View.GameScene
 {
     public class TurnAlarmPanel : MonoBehaviour
     {

@@ -1,8 +1,8 @@
-﻿using LikeLion.LH1.Client.Core;
+﻿using LikeLion.LP0.Client.Core;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LikeLion.LH1.Client.UnityWorld
+namespace LikeLion.LP0.Client.UnityWorld
 {
     public class Loop : MonoBehaviour, ILoop
     {

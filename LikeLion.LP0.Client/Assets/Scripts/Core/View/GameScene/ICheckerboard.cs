@@ -1,6 +1,6 @@
 using System;
 
-namespace LikeLion.LH1.Client.Core.View.GameScene
+namespace LikeLion.LP0.Client.Core.View.GameScene
 {
     public interface ICheckerboard : IDestroyable
     {

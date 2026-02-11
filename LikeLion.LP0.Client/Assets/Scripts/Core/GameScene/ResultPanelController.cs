@@ -1,7 +1,7 @@
-﻿using LikeLion.LH1.Client.Core.View.GameScene;
+﻿using LikeLion.LP0.Client.Core.View.GameScene;
 using System;
 
-namespace LikeLion.LH1.Client.Core.GameScene
+namespace LikeLion.LP0.Client.Core.GameScene
 {
     public class ResultPanelController
     {

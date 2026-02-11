@@ -1,5 +1,5 @@
-﻿using LikeLion.LH1.Client.Core;
-using LikeLion.LH1.Client.Core.GameScene;
+﻿using LikeLion.LP0.Client.Core;
+using LikeLion.LP0.Client.Core.GameScene;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine.Networking;
 
-namespace LikeLion.LH1.Client.UnityWorld.GameScene
+namespace LikeLion.LP0.Client.UnityWorld.GameScene
 {
     public class AIConsole : IAIConsole
     {

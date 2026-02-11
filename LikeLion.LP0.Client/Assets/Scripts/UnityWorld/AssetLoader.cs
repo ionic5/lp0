@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace LikeLion.LH1.Client.UnityWorld
+namespace LikeLion.LP0.Client.UnityWorld
 {
     public class AssetLoader
     {

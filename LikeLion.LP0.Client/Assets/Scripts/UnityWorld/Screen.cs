@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
 
-namespace LikeLion.LH1.Client.UnityWorld
+namespace LikeLion.LP0.Client.UnityWorld
 {
     public class Screen : MonoBehaviour
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LikeLion.LH1.Client.Core.GameScene.Entity
+namespace LikeLion.LP0.Client.Core.GameScene.Entity
 {
     public class Checkerboard
     {

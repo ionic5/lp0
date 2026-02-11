@@ -1,9 +1,9 @@
-﻿using LikeLion.LH1.Client.Core;
-using LikeLion.LH1.Client.Core.View.GameScene;
+﻿using LikeLion.LP0.Client.Core;
+using LikeLion.LP0.Client.Core.View.GameScene;
 using System;
 using UnityEngine;
 
-namespace LikeLion.LH1.Client.UnityWorld.View.GameScene
+namespace LikeLion.LP0.Client.UnityWorld.View.GameScene
 {
     public class PickStonePanel : MonoBehaviour, IPickStonePanel
     {

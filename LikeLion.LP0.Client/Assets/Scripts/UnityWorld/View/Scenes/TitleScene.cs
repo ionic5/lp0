@@ -1,7 +1,7 @@
-﻿using LikeLion.LH1.Client.Core.View.Scenes;
+﻿using LikeLion.LP0.Client.Core.View.Scenes;
 using System;
 
-namespace LikeLion.LH1.Client.UnityWorld.View.Scenes
+namespace LikeLion.LP0.Client.UnityWorld.View.Scenes
 {
     public class TitleScene : Scene, ITitleScene
     {

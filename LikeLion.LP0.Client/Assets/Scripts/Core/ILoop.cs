@@ -1,4 +1,4 @@
-﻿namespace LikeLion.LH1.Client.Core
+﻿namespace LikeLion.LP0.Client.Core
 {
     public interface ILoop
     {

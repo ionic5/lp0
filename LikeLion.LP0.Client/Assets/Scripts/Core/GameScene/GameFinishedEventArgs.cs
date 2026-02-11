@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LikeLion.LH1.Client.Core.GameScene
+namespace LikeLion.LP0.Client.Core.GameScene
 {
     public class GameFinishedEventArgs : EventArgs
     {
