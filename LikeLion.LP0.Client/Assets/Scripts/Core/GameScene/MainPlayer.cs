@@ -15,18 +15,18 @@ namespace LikeLion.LP0.Client.Core.GameScene
             _board = board;
             _isDestroyed = false;
             _isMyTurn = false;
-
-            _board.StonePointClickedEvent += OnStonePointClickedEvent;
         }
 
         public void StartTurn()
         {
             _isMyTurn = true;
+            _board.StonePointClickedEvent += OnStonePointClickedEvent;
         }
 
         public void HaltTurn()
         {
             _isMyTurn = false;
+            _board.StonePointClickedEvent -= OnStonePointClickedEvent;
         }
 
         private void OnStonePointClickedEvent(object sender, StonePointClickedEventArgs args)
@@ -46,8 +46,9 @@ namespace LikeLion.LP0.Client.Core.GameScene
             DestroyEvent?.Invoke(this, new DestroyEventArgs(this));
             DestroyEvent = null;
 
+            if (_isMyTurn)
+                _board.StonePointClickedEvent -= OnStonePointClickedEvent;
             _isMyTurn = false;
-            _board.StonePointClickedEvent -= OnStonePointClickedEvent;
         }
     }
 }
