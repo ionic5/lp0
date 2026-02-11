@@ -2,25 +2,21 @@
 
 namespace LikeLion.LP0.Client.Core.GameScene
 {
-    public class MainPlayer : IPlayer
+    public class MainPlayer : Player, IPlayer
     {
-        private readonly ICheckerboard _board;
-        private readonly IGameSession _gameSession;
+        private readonly Checkerboard _board;
         private bool _isDestroyed;
         private bool _isMyTurn;
-        private string _playerGuid;
 
         public event EventHandler<DestroyEventArgs> DestroyEvent;
 
-        public MainPlayer(ICheckerboard board, IGameSession gameSession)
+        public MainPlayer(Checkerboard board)
         {
             _board = board;
             _isDestroyed = false;
             _isMyTurn = false;
-            _playerGuid = string.Empty;
 
             _board.StonePointClickedEvent += OnStonePointClickedEvent;
-            _gameSession = gameSession;
         }
 
         public void StartTurn()
@@ -38,10 +34,7 @@ namespace LikeLion.LP0.Client.Core.GameScene
             if (!_isMyTurn)
                 return;
 
-            var column = args.Column;
-            var row = args.Row;
-            if (_board.IsStonePointEmpty(column, row))
-                _gameSession.PutStone(_board.GetGameGuid(), _playerGuid, column, row);
+            _board.TryPutStone(args.Column, args.Row, GetStoneType());
         }
 
         public void Destroy()
@@ -55,16 +48,6 @@ namespace LikeLion.LP0.Client.Core.GameScene
 
             _isMyTurn = false;
             _board.StonePointClickedEvent -= OnStonePointClickedEvent;
-        }
-
-        public void SetPlayerGuid(string playerGuid)
-        {
-            _playerGuid = playerGuid;
-        }
-
-        public string GetPlayerGuid()
-        {
-            return _playerGuid;
         }
     }
 }

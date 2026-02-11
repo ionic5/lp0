@@ -2,9 +2,10 @@
 {
     public interface IPlayer : IDestroyable
     {
-        void SetPlayerGuid(string playerGuid);
-        string GetPlayerGuid();
-        void StartTurn();
+        int GetStoneType();
         void HaltTurn();
+        bool IsStoneOwner(int stoneType);
+        void SetStone(int white);
+        void StartTurn();
     }
 }

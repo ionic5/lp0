@@ -13,7 +13,7 @@ namespace LikeLion.LP0.Client.UnityWorld.GameScene
 {
     public class AIConsole : IAIConsole
     {
-        private string _apiKey = "AIzaSyCsnmhTolefpbPPM5LqQqXDV2FxinfQkTE";
+        private string _apiKey = "AIzaSyB5hcDm3HXlPc1i9MnvP4m0TW3iCT1lVuA";
         private string _url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=";
         private readonly Core.ILogger _logger;
 
@@ -74,7 +74,7 @@ namespace LikeLion.LP0.Client.UnityWorld.GameScene
                     }
                 }
 
-                var move = await GetAiMoveAsync(19, stoneType, blackStones, whiteStones, 0, token);
+                var move = await GetAiMoveAsync(15, stoneType, blackStones, whiteStones, 0, token);
 
                 return new Tuple<int, int>(move.x, move.y);
             }

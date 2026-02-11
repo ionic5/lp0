@@ -3,22 +3,19 @@ using System.Threading;
 
 namespace LikeLion.LP0.Client.Core.GameScene
 {
-    public class AIPlayer : IPlayer
+    public class AIPlayer : Player, IPlayer
     {
-        private readonly Entity.Checkerboard _board;
+        private readonly Checkerboard _board;
         private readonly IAIConsole _aiConsole;
         private readonly Core.ILogger _logger;
-        private readonly IGameSession _gameSession;
         private CancellationTokenSource _cts;
         private bool _isDestroyed;
-        private string _playerGuid;
 
         public event EventHandler<DestroyEventArgs> DestroyEvent;
 
-        public AIPlayer(Entity.Checkerboard board, IGameSession gameSession, IAIConsole aiConsole, ILogger logger)
+        public AIPlayer(Checkerboard board, IAIConsole aiConsole, ILogger logger)
         {
             _board = board;
-            _gameSession = gameSession;
             _aiConsole = aiConsole;
             _cts = null;
             _isDestroyed = false;
@@ -35,14 +32,13 @@ namespace LikeLion.LP0.Client.Core.GameScene
 
             _cts = new CancellationTokenSource();
 
-            var point = await _aiConsole.RequestStonePoint(_board.GetStone(_playerGuid), _board.ToArray(), _cts.Token);
+            var point = await _aiConsole.RequestStonePoint(GetStoneType(), _board.ToArray(), _cts.Token);
             if (point == null)
                 return;
 
             var column = point.Item1;
             var row = point.Item2;
-            if (_board.IsStonePointEmpty(column, row))
-                _gameSession.PutStone(_board.GetGameGuid(), _playerGuid, column, row);
+            _board.TryPutStone(column, row, GetStoneType());
         }
 
         public void HaltTurn()
@@ -50,16 +46,6 @@ namespace LikeLion.LP0.Client.Core.GameScene
             _cts?.Cancel();
             _cts?.Dispose();
             _cts = null;
-        }
-
-        public void SetPlayerGuid(string playerGuid)
-        {
-            _playerGuid = playerGuid;
-        }
-
-        public string GetPlayerGuid()
-        {
-            return _playerGuid;
         }
 
         public void Destroy()

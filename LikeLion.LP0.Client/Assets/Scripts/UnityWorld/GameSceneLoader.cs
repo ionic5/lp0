@@ -1,7 +1,9 @@
 ﻿using LikeLion.LP0.Client.Core;
 using LikeLion.LP0.Client.Core.GameScene;
+using LikeLion.LP0.Client.Core.View.GameScene;
 using LikeLion.LP0.Client.UnityWorld.GameScene;
 using System;
+using System.Collections.Generic;
 
 namespace LikeLion.LP0.Client.UnityWorld
 {
@@ -33,33 +35,59 @@ namespace LikeLion.LP0.Client.UnityWorld
             var mainUIPanel = scene.MainUIPanel;
             var panelStack = scene.PanelStack;
 
-            IGameSession gameSession = null;
-            var mockCheckeboard = new Core.GameScene.Entity.Checkerboard();
-            gameSession = new MockGameSession(new Core.Timer(_time, loop),
-                mockCheckeboard,
-                () =>
-                {
-                    return new AIPlayer(mockCheckeboard,
-                    gameSession, new AIConsole(_logger), _logger);
-                });
-            var boardEntity = new Core.GameScene.Entity.Checkerboard();
-            boardEntity.Setup();
-            var board = new Core.GameScene.Checkerboard(checkerBoard, boardEntity, _logger);
-            var player = new MainPlayer(board, gameSession);
+            var board = new Core.GameScene.Checkerboard(checkerBoard, _logger);
 
-            var panelHdlr = new PanelHandler(panelStack, board, player, gameSession, _logger, _loadTitleScene);
-            var host = new GameHost(gameSession, board, player, mainUIPanel, new Core.Timer(_time, loop), panelHdlr);
+            var aiPlayer = new AIPlayer(board, new AIConsole(_logger), _logger);
+            var mainPlayer = new MainPlayer(board);
+            var players = new List<IPlayer>
+            {
+                mainPlayer,
+                aiPlayer
+            };
 
-            panelHdlr.SetHost(host);
+            var host = new GameHost(board, players, new Core.Timer(_time, loop), 60, mainUIPanel);
 
-            host.Connect();
+            Action showPickStonePanel = () =>
+            {
+                IPickStonePanel pickStonePanel = panelStack.ShowPickStonePanel();
+                var ctrl = new PickStonePanelController(mainPlayer, aiPlayer, host, pickStonePanel);
+            };
+            EventHandler startGameEvtHdlr = (sender, args) =>
+            {
+                mainUIPanel.Show();
+                mainUIPanel.SetMainPlayerStone(mainPlayer.GetStoneType());
+            };
+            EventHandler<GameFinishedEventArgs> gameFinishedEvtHdlr = (sender, args) =>
+            {
+                mainUIPanel.Hide();
+
+                var panel = panelStack.ShowResultPanel();
+                panel.SetResult(mainPlayer.IsStoneOwner(args.WinnerStone));
+                var ctrl = new ResultPanelController(host, panel, showPickStonePanel, _loadTitleScene);
+            };
+            host.StartGameEvent += startGameEvtHdlr;
+            host.GameFinishedEvent += gameFinishedEvtHdlr;
             loop.Add(host);
 
-            scene.DestroyEvent += (sender, args) =>
+            EventHandler<DestroyEventArgs> destroySceneEvtHdlr = null;
+            destroySceneEvtHdlr = (sender, args) =>
             {
-                host.Destroy();
+                scene.DestroyEvent -= destroySceneEvtHdlr;
+
+                host.StartGameEvent -= startGameEvtHdlr;
+                host.GameFinishedEvent -= gameFinishedEvtHdlr;
                 loop.Remove(host);
+                host.Destroy();
+
+                foreach (var entry in players)
+                    entry.Destroy();
+                players.Clear();
+
+                board.Destroy();
             };
+            scene.DestroyEvent += destroySceneEvtHdlr;
+
+            showPickStonePanel.Invoke();
 
             _screen.HideLoadingBlind();
         }
