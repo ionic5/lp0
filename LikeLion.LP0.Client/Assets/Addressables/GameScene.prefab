@@ -1364,7 +1364,7 @@ Transform:
   m_GameObject: {fileID: 2939084082080807958}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.65, y: -4.38, z: 0}
+  m_LocalPosition: {x: -4.559, y: -4.683, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2209,8 +2209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stonePointPrefab: {fileID: 900155869714924566, guid: 435ab7f2514c5f2459f6a264becd25c8, type: 3}
-  _gapX: 0.16
-  _gapY: 0.14
+  _gapX: 0.15
+  _gapY: 0.17
   _root: {fileID: 4902966696916303155}
   _originPoint: {fileID: 2939084082080807958}
   _blockSize: 0.5
@@ -2874,7 +2874,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: a69395b49d611624eb38d987454b8006, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df840abafa8dcba45bd8068d7281c30b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
